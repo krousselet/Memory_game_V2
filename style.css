@@ -1,0 +1,68 @@
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/*                                            TITLES                                                  */
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10vh;
+}
+
+
+/*                                          BUTTONS CONTAINER                                             */
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+
+
+button {
+    padding: 10px;
+}
+
+/*                                        GAME-CONTAINER                                                  */
+
+.easy-game, .medium-game, .hard-game, .mastermind-game {
+    display: none;
+}
+
+.easy-game-active, .medium-game-active, .hard-game-active, .mastermind-game-active {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 0 auto;
+}
+
+.card {
+    position: relative;
+    width: 15vw;
+    height: 35vh;
+    background-color: black;
+}
+
+.fron-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 7px;
+    background-color: black;
+
+}
+
+.back-face {
+
+}
