@@ -1,3 +1,7 @@
+/* GENERAL */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
+
 *, ::before, ::after {
     margin: 0;
     padding: 0;
@@ -6,9 +10,94 @@
 
 body {
     min-height: 100vh;
+    background-image: url(../ressources/caroussel.jpg);
+    background-size: cover;
+    background-position: center center;
+
+}
+
+h1, h2, p {
+    font-family: 'Crimson Text', serif;
+    color: white;
+    filter: brightness(1);
+}
+
+span {
+    color: black;
+    border-radius: 7px;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.pause, .resume {
+    background-image: url(../../Portefoglio/Alien/Ressources/pause-button.png);
+    z-index: 50;
+    /* filter: invert(100%); */
+    width: 40px;
+    height: 40px;
+    color: red;
+    cursor: pointer;
+}
+
+.resume {
+    display: none;
+    background-image: url(../../Portefoglio/Alien/Ressources/play-button.svg);
+}
+
+.timer, .score, .flips {
+    filter: brightness(1);
+    background-color: rgba(240, 240, 240, 0.486);
 }
 
 /*                                            TITLES                                                  */
+
+
+.lost, .won {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+}
+
+.won {
+    background-color: green;
+}
+
+.lost h3, .won h3 {
+    text-align: center;
+    font-size: 1.5em;
+    padding-bottom: 50px;
+}
+
+.lost p, .won p {
+    text-align: center;
+    font-size: 1.3em;
+    letter-spacing: 15px;
+}
+
+.lost a, .won a {
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all .5s ease;
+    color: black;
+}
+
+.lost a:hover, .won a:hover {
+    color: blue;
+    transition: all .5s ease;
+}
+
+.try-again {
+    color: green;
+}
 
 .titles {
     display: flex;
@@ -16,6 +105,24 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10vh;
+    margin-top: 60px;
+}
+
+.title-span {
+    animation: blink .7s linear infinite;
+    color: violet;
+    filter: brightness(1);
+    
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 
@@ -26,6 +133,25 @@ body {
     justify-content: space-around;
     align-items: center;
     margin-top: 10vh;
+}
+
+.all-buttons {
+    border: none;
+    text-transform: uppercase;
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, 0.795);
+    color: black;
+    filter: brightness(1);
+    font-family:  'Crimson Text', serif;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.all-buttons:hover {
+    background-color: rgba(0, 0, 0, 0.541);
+    color: white;
+    transition: all .2s linear;
 }
 
 
@@ -42,11 +168,12 @@ button {
 
 .easy-game-active, .medium-game-active, .hard-game-active, .mastermind-game-active {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 150px);
     gap: 25px;
     margin: 0 auto;
     perspective: 1000px;
-    margin: 0 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .info-container {
@@ -63,8 +190,8 @@ button {
 
 .card {
     position: relative;
-    width: 100%;
-    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform .5s;
@@ -78,6 +205,13 @@ button {
 
 .card.flip {
     transform: rotateY(180deg);
+}
+
+.front-face {
+    background-image: url(../ressources/Backcard.jpg);
+    background-size: cover;
+    background-position: center center;
+    overflow: hidden;
 }
 
 .front-face, .back-face {
@@ -97,4 +231,20 @@ button {
 img {
     width: 100%;
     border-radius: 7px;
+}
+
+/******************************************* MEDIA QUERIES  ***********************************************/
+
+@media (width > 764px) {
+    .easy-game-active, .medium-game-active, .hard-game-active, .mastermind-game-active {
+        grid-template-columns: repeat(3, 250px);
+}
+    .info-container {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 50%;
+        justify-content: space-between;
+        
+    }
 }

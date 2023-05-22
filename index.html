@@ -9,147 +9,111 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="titles">
-        <h1>Memory_game_</h1>
+    
+    <div class="front-page">
+        <div class="titles">
+        <h1>Memory game <span class="title-span">_</span></h1>
         <h2>Choisissez votre difficulté...</h2>
-    </div>
-    <div class="buttons-container">
-        <button class="easy-btn">easy</button>
-        <button class="medium-btn">medium</button>
-        <button class="hard-btn">hard</button>
-        <button class="mastermind-btn">mastermind</button>
-    </div>
-    <div class="info-container">
+        </div>
+        <div class="buttons-container">
+        <button class="easy-btn all-buttons">easy</button>
+        <button class="medium-btn all-buttons">medium</button>
+        <button class="hard-btn all-buttons">hard</button>
+        <button class="mastermind-btn all-buttons">mastermind</button>
+        </div>
+        <div class="info-container">
+        <span class="pause"> | |</span>
+        <span class="resume">|></span>
         <span class="timer">Timer : <span class="time">0</span></span>
         <span class="flips">Flips : <span class="flips-count">0</span> </span>
         <span class="score">Score : <span class="scoring">0</span> </span>
-    </div>
-    <div class="easy-game">
-        <div class="card" data-id="a">
-            <div class="front-face"></div>
-            <img src="https://picsum.photos/75/75?random=55" alt="Image aléatoire" class="backface" >
         </div>
+    </div>
+    <div class="lost">
+        <h3>Perdu !</h3>
+        <p>Vous pouvez <a class="try-again" href="index.html">réassayer</a></p>
+    </div>
+    <div class="won">
+        <h3>Gagné !</h3>
+        <p>Vous pouvez <a class="try-again" href="index.html">réassayer</a></p>
+    </div>
+    </div>
+    <div class="easy-game all-games">
         <div class="card" data-id="a">
             <div class="front-face"></div>
-            <img src="https://picsum.photos/75/75?random=55" alt="Image aléatoire" class="backface" >
+            <img src="../ressources/figma-cards/1.svg" alt="Image aléatoire" class="backface a" >
         </div>
         <div class="card" data-id="b">
             <div class="front-face"></div>
-            <img src="https://picsum.photos/75/75?random=47" alt="Image aléatoire" class="backface" >
+            <img src="../ressources/figma-cards/2.svg" alt="Image aléatoire" class="backface b" >
+        </div>
+        <div class="card" data-id="a">
+            <div class="front-face"></div>
+            <img src="../ressources/figma-cards/1.svg" alt="Image aléatoire" class="backface c" >
         </div>
         <div class="card" data-id="c">
             <div class="front-face"></div>
-            <img src="https://picsum.photos/75/75?random=57" alt="Image aléatoire" class="backface" >
+            <img src="../ressources/figma-cards/3.svg" alt="Image aléatoire" class="backface c" >
+        </div>
+        <div class="card" data-id="c">
+            <div class="front-face"></div>
+            <img src="../ressources/figma-cards/3.svg" alt="Image aléatoire" class="backface a" >
         </div>
         <div class="card" data-id="b">
             <div class="front-face"></div>
-            <img src="https://picsum.photos/75/75?random=47" alt="Image aléatoire" class="backface" >
+            <img src="../ressources/figma-cards/2.svg" alt="Image aléatoire" class="backface b" >
+        </div>
+    </div>
+    <div class="medium-game all-games" >
+        <div class="card" data-id="a">
+            <div class="front-face"></div>
+            <img src="https://picsum.photos/75/75?random=1" alt="Image aléatoire" class="backface a">
+        </div>
+        <div class="card" data-id="b">
+            <div class="front-face"></div>
+            <img src="https://picsum.photos/75/75?random=2" alt="Image aléatoire" class="backface b">
         </div>
         <div class="card" data-id="c">
             <div class="front-face"></div>
-            <img src="https://picsum.photos/75/75?random=57" alt="Image aléatoire" class="backface" >
+            <img src="https://picsum.photos/75/75?random=3" alt="Image aléatoire" class="backface c">
         </div>
-    </div>
-    <div class="medium-game">
-        <div class="card">
+        <div class="card" data-id="a">
             <div class="front-face"></div>
-            <img src="https://picsum.photos/75/75?random=47" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=1" alt="Image aléatoire" class="backface d">
         </div>
-        <div class="card">
+        <div class="card" data-id="e">
             <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=5" alt="Image aléatoire" class="backface e">
         </div>
-        <div class="card">
+        <div class="card" data-id="d">
             <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=4" alt="Image aléatoire" class="backface f">
         </div>
-        <div class="card">
+        <div class="card" data-id="d">
             <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=4" alt="Image aléatoire" class="backface g">
         </div>
-        <div class="card">
+        <div class="card" data-id="c">
             <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=3" alt="Image aléatoire" class="backface h">
         </div>
-        <div class="card">
+        <div class="card" data-id="b">
             <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=2" alt="Image aléatoire" class="backface i">
         </div>
-        <div class="card">
+        <div class="card" data-id="f">
             <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=6" alt="Image aléatoire" class="backface j">
         </div>
-        <div class="card">
+        <div class="card" data-id="e">
             <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=5" alt="Image aléatoire" class="backface k">
         </div>
-        <div class="card">
+        <div class="card" data-id="f">
             <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
+            <img src="https://picsum.photos/75/75?random=6" alt="Image aléatoire" class="backface l">
         </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="medium-game">
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-        <div class="card">
-            <div class="front-face"></div>
-            <img src="#" alt="Image aléatoire" class="backface">
-        </div>
-    </div>
-    <div class="hard-game">
+    <div class="hard-game all-games">
         <div class="card">
             <div class="front-face"></div>
             <img src="#" alt="Image aléatoire" class="backface">
