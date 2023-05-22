@@ -50,7 +50,7 @@ let pauseCount = false;
 
 // function winTheGameEasy() {
 //   if (scoring === 3) {
-//     endGame = true;
+// /    endGame = true;
 //   } else if (endGame === true) {
 //     document.body.style.display = 'none';
 //   }

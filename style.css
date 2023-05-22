@@ -2,7 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
 
-*, ::before, ::after {
+*,
+::before,
+::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,7 +18,9 @@ body {
 
 }
 
-h1, h2, p {
+h1,
+h2,
+p {
     font-family: 'Crimson Text', serif;
     color: white;
     filter: brightness(1);
@@ -30,7 +34,8 @@ span {
     font-weight: 700;
 }
 
-.pause, .resume {
+.pause,
+.resume {
     background-image: url(../../Portefoglio/Alien/Ressources/pause-button.png);
     z-index: 50;
     /* filter: invert(100%); */
@@ -45,15 +50,18 @@ span {
     background-image: url(../../Portefoglio/Alien/Ressources/play-button.svg);
 }
 
-.timer, .score, .flips {
+.timer,
+.score,
+.flips {
     filter: brightness(1);
     background-color: rgba(240, 240, 240, 0.486);
 }
 
-/*                                            TITLES                                                  */
+/**                                            TITLES                                                  */
 
 
-.lost, .won {
+.lost,
+.won {
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -71,26 +79,30 @@ span {
     background-color: green;
 }
 
-.lost h3, .won h3 {
+.lost h3,
+.won h3 {
     text-align: center;
     font-size: 1.5em;
     padding-bottom: 50px;
 }
 
-.lost p, .won p {
+.lost p,
+.won p {
     text-align: center;
     font-size: 1.3em;
     letter-spacing: 15px;
 }
 
-.lost a, .won a {
+.lost a,
+.won a {
     text-transform: uppercase;
     text-decoration: none;
     transition: all .5s ease;
     color: black;
 }
 
-.lost a:hover, .won a:hover {
+.lost a:hover,
+.won a:hover {
     color: blue;
     transition: all .5s ease;
 }
@@ -112,7 +124,7 @@ span {
     animation: blink .7s linear infinite;
     color: violet;
     filter: brightness(1);
-    
+
 }
 
 @keyframes blink {
@@ -142,7 +154,7 @@ span {
     background-color: rgba(255, 255, 255, 0.795);
     color: black;
     filter: brightness(1);
-    font-family:  'Crimson Text', serif;
+    font-family: 'Crimson Text', serif;
     font-size: 1.3em;
     cursor: pointer;
     transition: all .2s linear;
@@ -162,11 +174,17 @@ button {
 
 /*                                        GAME-CONTAINER                                                  */
 
-.easy-game, .medium-game, .hard-game, .mastermind-game {
+.easy-game,
+.medium-game,
+.hard-game,
+.mastermind-game {
     display: none;
 }
 
-.easy-game-active, .medium-game-active, .hard-game-active, .mastermind-game-active {
+.easy-game-active,
+.medium-game-active,
+.hard-game-active,
+.mastermind-game-active {
     display: grid;
     grid-template-columns: repeat(3, 150px);
     gap: 25px;
@@ -214,7 +232,8 @@ button {
     overflow: hidden;
 }
 
-.front-face, .back-face {
+.front-face,
+.back-face {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -236,15 +255,20 @@ img {
 /******************************************* MEDIA QUERIES  ***********************************************/
 
 @media (width > 764px) {
-    .easy-game-active, .medium-game-active, .hard-game-active, .mastermind-game-active {
+
+    .easy-game-active,
+    .medium-game-active,
+    .hard-game-active,
+    .mastermind-game-active {
         grid-template-columns: repeat(3, 250px);
-}
+    }
+
     .info-container {
         position: relative;
         left: 50%;
         transform: translateX(-50%);
         max-width: 50%;
         justify-content: space-between;
-        
+
     }
 }
