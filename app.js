@@ -39,6 +39,11 @@ let mastermindWin = false;
 let pause = document.querySelector('.pause');
 let resume = document.querySelector('.resume');
 let pauseCount = false;
+let music = document.querySelector('.music-off');
+let track = document.querySelector('.track');
+let titles = document.querySelector('.titles');
+let countFlips = true;
+let listing = document.querySelector('.listing')
 
 // Problems I encountered :
 // BEWARE to set the data-attribute on the card, and not on the image !!! //
@@ -46,15 +51,6 @@ let pauseCount = false;
 // If the player clicked two times on the same card, it disabled it //
 
 //                                   MES FONCTIONS                               ////////////////
-
-
-// function winTheGameEasy() {
-//   if (scoring === 3) {
-// /    endGame = true;
-//   } else if (endGame === true) {
-//     document.body.style.display = 'none';
-//   }
-// }
 
 function Timer() {
 
@@ -186,6 +182,7 @@ function pauseTimer() {
     resume.style.display = 'block';
     timerTwo.pause();
   }
+
   resume.onclick = function () {
     resume.style.display = 'none';
     pause.style.display = 'block';
@@ -195,17 +192,23 @@ function pauseTimer() {
 
 
 function winCondition() {
-  if (scoring === 3 && easyWin === true) {
+
+  if ([
+    [easyWin, 3],
+    [mediumWin, 6],
+    [hardWin, 9],
+    [mastermindWin, 12]
+  ].some(item => {
+    const [bool, int] = item;
+
+    return bool === true && scoring === int;
+  })) {
     won.style.display = 'flex';
-  } if (scoring === 6 && mediumWin === true) {
-    won.style.display = 'flex';
-  } if (scoring === 9 && hardWin === true) {
-    won.style.display = 'flex';
-  } if (scoring === 12 && mastermindWin === true) {
-    won.style.display = 'flex';
+    listing.innerHTML = `Félicitations !<br> Vous avez gagné en ${flips} coups,<br> et ${scoring} points !`;
+    stopTimer();
   }
 
-  stopTimer();
+
 
 }
 
@@ -238,7 +241,7 @@ function decrementOneSecond() {
 
 
 
-    if (restant < 0) {
+    if (restant <= 0) {
       stopTimer();
       frontPage.classList.remove('front-page');
       lost.style.display = 'flex';
@@ -251,74 +254,78 @@ function decrementOneSecond() {
 function changeOpacity(element) {
   element.style.opacity = 0;
 }
-
-// function shuffle() {
-//   cards.forEach(card => {
-//     randomIndex = Math.random(Math.floor()* 12);
-//     card.style.order = randomIndex;
-//   })
-// }
+let cartesRetournees = [];
 
 function flipCard() {
-  if (lockBoard) return;
-  // Check if the this is actually the cards : //
-  if (this === firstCard) return;
+
+  console.debug(cartesRetournees);
+
+  if (cartesRetournees.length === 2 || lockBoard) {
+    return;
+  }
+
+  if (cartesRetournees.includes(this)) {
+    return;
+  }
+
   this.classList.toggle('flip');
-  // Reversed logic. If cardFlipped is true // 
-  if (!cardFlipped) {
-    cardFlipped = true;
-    firstCard = this;
-  } else {
-    cardFlipped = false;
-    secondCard = this;
+
+  cartesRetournees.push(this);
+
+  [firstCard, secondCard] = cartesRetournees;
+  if (cartesRetournees.length === 2) {
     ifMatch();
     winCondition();
-    // BEWARE to set the data-attribute on the card, and not on the image !!! //
-    // If the player is to swift he can unravel too many cards at once ! //
+
+
   }
+
+  //if (lockBoard) return;
+  // Check if the this is actually the cards : //
+  // if (this === firstCard) return;
+  // this.classList.toggle('flip');
+  // Reversed logic. If cardFlipped is true // 
+  // if (!cardFlipped) {
+  //   cardFlipped = true;
+  //   firstCard = this;
+  // } else {
+  //   cardFlipped = false;
+  //   secondCard = this;
+  //   ifMatch();
+  //   winCondition();
+  // BEWARE to set the data-attribute on the card, and not on the image !!! //
+  // If the player is swift enough he can unravel too many cards at once ! //
+  // }
 }
 
 function scoringHandler() {
   if (firstCard.dataset.id === secondCard.dataset.id) {
-    // scoreDisplay.innerHTML = 'Score : ' + (scoring += 1);
     scoreDisplay.innerHTML = `Score : ${scoring += 1}`;
-    // flipsCount.innerHTML = flips++;
-  }
-}
-
-// Evaluer une condition de victoire si TOUTES les cartes sont retournées;
-function winConditionEasy() {
-  if (scoring === 3) {
-    allGames.style.display = 'none';
-    buttonClicked = false;
-
   }
 }
 
 function flipsHandler() {
-  if (firstCard.dataset.id !== secondCard.dataset.id) {
+  if (countFlips) {
     flipsCount.innerHTML = flips++;
+    console.log(timerTwo);
   }
-  else if (firstCard.dataset.id === secondCard.dataset.id) {
-    flipsCount.innerHTML = flips++;
-  }
-  console.log(flips);
-  //   }if (firstCard.dataset.id !== secondCard.dataset.id) {
-  // flipsCount.innerHTML = flips++;
-  //   }
 
 }
 
 function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
+  countFlips = true;
 }
 
 function unflipCards() {
   lockBoard = true;
+  timerTwo.pause();
   setTimeout(() => {
+    timerTwo.resume();
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
+    cartesRetournees = [];
     lockBoard = false;
   }, 1000);
   flipsHandler();
@@ -333,6 +340,7 @@ function ifMatch() {
     disableCards();
     changeOpacity(firstCard);
     changeOpacity(secondCard);
+    cartesRetournees = [];
   }
   else {
     unflipCards();
@@ -346,19 +354,20 @@ pauseTimer();
 ////////////////////                  BUTTONS REACTION                          ///////////////////
 
 easyB.onclick = function () {
+  decrementOneSecond();
   easyWin = true;
   easyGame.classList.toggle('easy-game-active');
   buttonClicked = true;
+  for (i = allGames.children.length; i >= 0; i--) {
+    allGames.appendChild(allGames.children[Math.random() * i | 0]);
+  };
 
-
-  decrementOneSecond();
-  cards.forEach(card => card.addEventListener('click', flipCard, winConditionEasy));
   if (buttonClicked === true) {
     buttons.forEach(item => item.style.display = 'none');
   } if (buttonClicked === false) {
     buttons.forEach(item => item.style.display = 'none')
   }
-}
+};
 
 mediumB.onclick = function () {
   mediumWin = true;
@@ -366,20 +375,25 @@ mediumB.onclick = function () {
   buttonClicked = true;
   decrementOneSecond();
   buttonClicked ? buttons.forEach(item => item.style.display = 'none') : console.log('test');
-  // if (buttonClicked === true) {
-  //     buttons.forEach(item => item.style.display = 'none');
-  // }
-}
+  for (i = allGames.children.length; i >= 0; i--) {
+    allGames.appendChild(allGames.children[Math.random() * i | 0]);
+  }
+};
 
 hardB.onclick = function () {
   hardWin = true;
   hardGame.classList.toggle('hard-game-active');
   buttonClicked = true;
   decrementOneSecond();
+  for (i = allGames.children.length; i >= 0; i--) {
+    allGames.appendChild(allGames.children[Math.random() * i | 0]);
+  };
   if (buttonClicked === true) {
     buttons.forEach(item => item.style.display = 'none');
+  } if (buttonClicked === false) {
+    buttons.forEach(item => item.style.display = 'none')
   }
-}
+};
 
 mastermindB.onclick = function () {
   mastermindWin = true;
@@ -390,9 +404,28 @@ mastermindB.onclick = function () {
     buttons.forEach(item => item.style.display = 'none');
   }
 }
+if (buttonClicked === true) {
+  buttons.forEach(item => item.style.display = 'none');
+}
+for (i = allGames.children.length; i >= 0; i--) {
+  allGames.appendChild(allGames.children[Math.random() * i | 0]);
+};
 
 
 
-//                                    CODE                                       //////////////////
+
+// ***********************************************CODE**************************//////////////////
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+
+music.onclick = function () {
+  if (music.innerHTML === 'Music : Off') {
+    music.innerHTML = 'Music : On';
+    track.play();
+  } else if (music.innerHTML === 'Music : On') {
+    music.innerHTML = 'Music : Off';
+    track.pause();
+  }
+}
+
+buttons.forEach(el => el.addEventListener('click', function () { titles.style.display = 'none'; }));

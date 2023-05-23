@@ -12,18 +12,23 @@
 
 body {
     min-height: 100vh;
-    background-image: url(../ressources/caroussel.jpg);
-    background-size: cover;
-    background-position: center center;
+    background-color: bisque;
 
+}
+
+img {
+    border-radius: 7px;
+    height: 100%;
 }
 
 h1,
 h2,
 p {
     font-family: 'Crimson Text', serif;
-    color: white;
+    color: black;
     filter: brightness(1);
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 span {
@@ -32,6 +37,16 @@ span {
     font-size: 1.3em;
     text-transform: uppercase;
     font-weight: 700;
+}
+
+/*************************************************** MENU *******************************************/
+.front-page {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
 }
 
 .pause,
@@ -54,7 +69,18 @@ span {
 .score,
 .flips {
     filter: brightness(1);
-    background-color: rgba(240, 240, 240, 0.486);
+    padding: 25px;
+}
+
+.music {
+    padding-bottom: 25px;
+    cursor: pointer;
+}
+
+.music:active {
+    background-color: white;
+    border-radius: 7px;
+    transition: all .5s ease;
 }
 
 /**                                            TITLES                                                  */
@@ -67,16 +93,23 @@ span {
     justify-content: center;
     align-items: center;
     background-color: red;
-    height: 100vh;
+    height: 150vh;
     width: 100vw;
     z-index: 1000;
-    height: 100vh;
     position: absolute;
     top: 0;
 }
 
 .won {
     background-color: green;
+}
+
+.listing {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px 0;
+    font-size: 1.2em;
 }
 
 .lost h3,
@@ -120,6 +153,10 @@ span {
     margin-top: 60px;
 }
 
+.titles h2 {
+    text-align: center;
+}
+
 .title-span {
     animation: blink .7s linear infinite;
     color: violet;
@@ -144,26 +181,32 @@ span {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 10vh;
+    margin: 10vh auto;
+    scale: .8;
 }
 
 .all-buttons {
     border: none;
     text-transform: uppercase;
     border-radius: 7px;
-    background-color: rgba(255, 255, 255, 0.795);
+    background-color: rgba(255, 255, 255, 0.5);
     color: black;
     filter: brightness(1);
     font-family: 'Crimson Text', serif;
     font-size: 1.3em;
     cursor: pointer;
     transition: all .2s linear;
+    margin: 0 20px;
 }
 
 .all-buttons:hover {
     background-color: rgba(0, 0, 0, 0.541);
     color: white;
     transition: all .2s linear;
+}
+
+.all-buttons:active {
+    border: 5 px solid black;
 }
 
 
@@ -186,19 +229,32 @@ button {
 .hard-game-active,
 .mastermind-game-active {
     display: grid;
-    grid-template-columns: repeat(3, 150px);
+    grid-template-columns: repeat(3, auto);
     gap: 25px;
-    margin: 0 auto;
+    margin: 50px 25px;
     perspective: 1000px;
     justify-content: center;
     align-items: center;
 }
 
+.medium-game {
+    grid-template-columns: repeat(4, auto);
+}
+
+.hard-game {
+    grid-template-columns: repeat(6, auto);
+}
+
+.mastermind-game {
+    grid-template-columns: repeat(8, auto);
+}
+
 .info-container {
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: space-between;
-    margin: 7vh;
+    /* margin: 7vh; */
     font-size: 1.2em;
 }
 
@@ -214,6 +270,8 @@ button {
     transform-style: preserve-3d;
     transition: transform .5s;
     cursor: pointer;
+    box-shadow: 5px 5px 15px black;
+    border-radius: 7px;
 }
 
 .card:active {
@@ -223,6 +281,7 @@ button {
 
 .card.flip {
     transform: rotateY(180deg);
+    box-shadow: -5px 5px 15px black;
 }
 
 .front-face {
@@ -240,6 +299,7 @@ button {
     border-radius: 7px;
     background-color: black;
     backface-visibility: hidden;
+    border-radius: 7px;
 }
 
 .back-face {
@@ -260,15 +320,25 @@ img {
     .medium-game-active,
     .hard-game-active,
     .mastermind-game-active {
-        grid-template-columns: repeat(3, 250px);
+        grid-template-columns: repeat(4, auto);
+    }
+
+    .easy-game {
+        grid-template-columns: repeat(3, auto);
+    }
+
+    .hard-game-active {
+        grid-template-columns: repeat(6, auto);
     }
 
     .info-container {
         position: relative;
-        left: 50%;
-        transform: translateX(-50%);
         max-width: 50%;
         justify-content: space-between;
+    }
 
+    .buttons-container {
+        scale: 1;
+        padding-bottom: 25px;
     }
 }
